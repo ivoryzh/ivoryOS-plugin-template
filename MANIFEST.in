@@ -1,0 +1,5 @@
+graft heinsight_plugin/static
+graft heinsight_plugin/templates
+global-exclude *.pyc
+
+prune heinsight_plugin/docs
