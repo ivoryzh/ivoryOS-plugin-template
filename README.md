@@ -105,12 +105,9 @@ pip install .
 
 Once installed, IvoryOS will automatically detect and load the plugin based on the entry point.
 
-## Conclusion
-
-This `Hello World` example serves as a template for creating new plugins for Ivory OS. Follow this structure to develop and extend the platform with new functionality.
-
 
 ## Support
+Ivory Zhang: ivoryzhang@chem.ubc.ca 
 
 ## Roadmap
 
