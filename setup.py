@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         "ivoryos.plugins": [
-            "hello_world = ivoryos_plugin.hello_world",  # Plugin entry point
+            "plugin = ivoryos_plugin.hello_world",  # Plugin entry point
         ],
     },
     include_package_data=True,

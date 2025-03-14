@@ -1,5 +1,5 @@
-graft heinsight_plugin/static
-graft heinsight_plugin/templates
+graft ivoryos_plugin/static
+graft ivoryos_plugin/templates
 global-exclude *.pyc
 
-prune heinsight_plugin/docs
+prune ivoryos_plugin/docs
