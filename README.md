@@ -1,14 +1,17 @@
 
 # Hello World Plugin for IvoryOS
 
-This is a template plugin for extending Ivory OS with standalone pages. It demonstrates how to structure a plugin using Flask's Blueprint system and integrate with IvoryOS through an entry point.
+This is a template plugin for extending Ivory OS with standalone pages. 
+It demonstrates how to structure a plugin using Flask's Blueprint 
+and integrate with IvoryOS through an entry point.
 
 ## Features
 
 - Uses Flask's `Blueprint` to modularize the plugin.
 - Includes a WebSocket (`SocketIO`) integration.
-- Can function as a standalone page or as part of the IvoryOS ecosystem.
-- Requires an entry point in `setup.py` for automatic discovery.
+- Includes hardware access for components that are initialized for **IvoryOS**
+- Can function as a standalone page or as part of the IvoryOS.
+- Can support direct config (option 1) or entry point in `setup.py` for automatic discovery (option 2).
 ![img.png](docs%2Fimg.png)
 ## Plugin Structure
 
@@ -16,14 +19,14 @@ This is a template plugin for extending Ivory OS with standalone pages. It demon
 ivoryos_plugin/
 ├── templates/
 │   ├── example.html    # Template file for the plugin
-├── __init__.py
-├── hello_world.py      # Main plugin file
-MANIFEST.in             # installation include/exclude
-setup.py                # Plugin installation file
+├── __init__.py         
+├── plugin.py           # Main plugin file
+MANIFEST.in             # installation include/exclude (optional)
+setup.py                # Plugin installation file (optional)
 README.md
 ```
 
-## Main Plugin File: `hello_world.py`
+## Main Plugin File: `plugin.py`
 
 The plugin must define a `main` function inside a Flask `Blueprint`.
 This function serves as the main route of the plugin (quick access in navigation panel).
@@ -44,11 +47,15 @@ def main():
 
 Flask's `Blueprint` is used to organize routes and views into separate modules. This makes it easy to create modular and reusable components.
 
-- `Blueprint("plugin", __name__, template_folder=...)` defines a new component that can be registered in a Flask app.
-- The `@plugin.route('/')` decorator sets up a route for the plugin.
-- When used inside IvoryOS, the `Blueprint` is registered dynamically, allowing for extension without modifying the core application.
+- `Blueprint("plugin", __name__, template_folder=...)` defines a new component that can be registered in a Flask app. The blueprint's name ("plugin") need to be unique.
+- The `@plugin.route('/')` decorator sets up a route for the plugin. "/" is recommended, but any routes can work.
 
-## Plugin Registration in `setup.py`
+## Option 1 - Plugin Registration in `ivoryos.run()`
+```python
+from ivoryos_plugin.plugin import plugin
+ivoryos.run(__name__, blueprint_plugins=plugin)
+```
+## Option 2 - Plugin Registration in `setup.py`
 
 Each plugin must define an entry point under `ivoryos.plugins` so that it can be discovered by IvoryOS.
 
@@ -65,6 +72,15 @@ setup(
     ...
 )
 ```
+### Installing the Plugin
+
+To install the plugin in a Python environment:
+
+```sh
+pip install .
+```
+
+Once installed, IvoryOS will automatically detect and load the plugin based on the entry point.
 
 ## Keynotes
 1. Attribute name matches the Blueprint name (e.g. both named `plugin` in the example)
@@ -73,7 +89,7 @@ plugin = Blueprint("plugin", __name__, template_folder=os.path.join(os.path.dirn
 ```
 
 2. Include `main()` as the main route for the plugin
-3. Entry point includes `ivoryos.plugins` in setup.py has the attribute name included (e.g. named `plugin` in the example.
+3. For automatic integration (option 2), entry point includes `ivoryos.plugins` in setup.py has the attribute name included (e.g. named `plugin` in the example.
 
 ## Running the Plugin Standalone
 
@@ -95,15 +111,6 @@ if __name__ == '__main__':
 
 This initializes the Flask app and runs the `Blueprint` independently.
 
-## Installing the Plugin
-
-To install the plugin in a Python environment:
-
-```sh
-pip install .
-```
-
-Once installed, IvoryOS will automatically detect and load the plugin based on the entry point.
 
 
 ## Support
