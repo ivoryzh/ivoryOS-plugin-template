@@ -1,7 +1,10 @@
 Plugin for IvoryOS
 ===================
 
-This is a `plugin template <https://gitlab.com/heingroup/ivoryos-plugin-template>`_ for extending IvoryOS with standalone pages. It demonstrates how to structure a plugin using Flask's Blueprint system and integrate with IvoryOS through an entry point.
+This is a `plugin template <https://gitlab.com/heingroup/ivoryos-plugin-template>`_
+for extending IvoryOS with standalone pages.
+It demonstrates how to structure a plugin using Flask's Blueprint system and integrate with
+`IvoryOS <https://gitlab.com/heingroup/ivoryos>`_.
 
 Features
 --------
