@@ -1,5 +1,5 @@
-Plugin for IvoryOS: ``Hello World``
-========================================
+Plugin for IvoryOS
+===================
 
 This is a `plugin template <https://gitlab.com/heingroup/ivoryos-plugin-template>`_ for extending IvoryOS with standalone pages. It demonstrates how to structure a plugin using Flask's Blueprint system and integrate with IvoryOS through an entry point.
 
@@ -30,7 +30,7 @@ Plugin structure
 Quick start
 ------------------------------------
 
-.. code-block:: commandline
+.. code-block::
 
     git clone https://gitlab.com/heingroup/ivoryos-plugin-template
     pip install ivoryos
@@ -51,7 +51,7 @@ Each plugin must define an entry point under ``ivoryos.plugins`` so that it can 
 Note for ``plugin.py``
 ------------------------------------
 
-The plugin must define a ``main`` function inside a Flask ``Blueprint``. This function serves as the main route of the plugin (quick access in the navigation panel).
+- The plugin must define a ``main`` function inside a Flask ``Blueprint``. This function serves as the main route of the plugin (quick access in the navigation panel).
 
 .. code-block:: python
 
@@ -64,7 +64,9 @@ The plugin must define a ``main`` function inside a Flask ``Blueprint``. This fu
     def main():
         base_exists = "base.html" in current_app.jinja_loader.list_templates()
         return render_template('example.html', base_exists=base_exists)
-Import ``deck`` from ``global_config`` if accessing hardware components that are initialized for ``IvoryOS``
+
+
+- Import ``deck`` from ``global_config`` if accessing hardware components that are initialized for ``IvoryOS``
 
 .. code-block:: python
 
