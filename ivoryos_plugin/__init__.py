@@ -1,1 +1,1 @@
-from .hello_world import *
+from .plugin import *
