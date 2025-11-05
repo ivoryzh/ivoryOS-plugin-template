@@ -10,7 +10,7 @@ It demonstrates how to structure a plugin using Flask's Blueprint system and int
 Quicker Than Quick Start: Vibe Coding your Plugin 🚀
 ------------------------------------------------------
 
-Import `https://github.com/ivoryzh/ivoryOS-plugin-template` to your choice of LLM, and prompt what you need for the web app.
+Import ``https://github.com/ivoryzh/ivoryOS-plugin-template`` to your choice of LLM, and prompt what you need for the web app.
 
 **Example Prompt:**
 "I want to build a plugin page for ivoryOS to watch a stream from my webcam, can you help write it for me?"
